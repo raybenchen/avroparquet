@@ -1,0 +1,61 @@
+Avro and Parquet Java Instructions
+
+mvn clean package
+
+java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils avro write src/main/resources/avro_file.avro src/main/resources/old_schema.avsc
+
+java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils avro read src/main/resources/avro_file.avro
+
+java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils avro read src/main/resources/avro_file.avro src/main/resources/new_schema.avsc
+
+cat src/main/resources/new_schema.avsc
+
+
+# Parquet
+
+java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils parquet write src/main/resources/parquet_file.parquet src/main/resources/old_schema.avsc
+
+java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils parquet read src/main/resources/parquet_file.parquet
+
+
+
+
+
+Kafka Instructions:
+
+
+curl -O https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.10-0.9.0.1.tgz
+tar -xvf ./kafka_2.10-0.9.0.1
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+
+cd storageformats_meetup
+
+sbt clean assembly
+
+./bin/spark-submit --class com.airisdata.streamingutils.ClickEmitter target/scala-2.10/storageformats_meetup-assembly-1.0.jar localhost:9092 test
+
+./bin/spark-submit --class com.airisdata.streamingutils.KafkaAvroConsumer target/scala-2.10/storageformats_meetup-assembly-1.0.jar test 2
+
+~/Downloads/spark-1.6.1-bin-hadoop2.6/bin/spark-submit --class com.airisdata.streamingutils.ClickEmitter target/scala-2.10/storageformats_meetup-assembly-1.0.jar localhost:9092 test
+
+
+
+(Optional) Python with AVRO
+see:  /airisdata-meeetup/src/main/resources/
+
+curl -O http://www.gtlib.gatech.edu/pub/apache/avro/stable/py/avro-1.7.7.tar.gz
+tar xvf avro-1.7.7.tar.gz
+cd avro-1.7.7
+sudo python setup.py install
+python
+
+>>> import avro
+>>> import avro.schema
+>>> from avro.io import DatumReader
+>>> from avro.datafile import DataFileReader
+>>> reader = DataFileReader(open("meetup_avro.avro", "r"), DatumReader())
+>>> for meetup in reader: print meetup%
+
+
+
