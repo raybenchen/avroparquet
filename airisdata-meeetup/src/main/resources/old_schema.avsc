@@ -1,0 +1,24 @@
+{
+	"type": "record",
+	"name": "Meetup",
+	"fields": [{
+		"name": "name",
+		"type": "string"
+	}, {
+		"name": "meetup_date",
+		"type": "string"
+	}, {
+		"name": "going",
+		"type": "int"
+	}, {
+		"name": "organizer",
+		"type": "string",
+		"default": "unknown"
+	}, {
+		"name": "topics",
+		"type": {
+			"type": "array",
+			"items": "string"
+		}
+	}]
+}

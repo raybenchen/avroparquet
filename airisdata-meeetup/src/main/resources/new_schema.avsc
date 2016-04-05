@@ -1,0 +1,20 @@
+{
+	"type": "record",
+	"name": "Meetup",
+	"fields": [{
+		"name": "name",
+		"type": "string"
+	}, {
+		"name": "meetup_date",
+		"type": "string",
+		"java-class": "java.util.Date"
+	}, {
+		"name": "attendance",
+		"type": "int",
+		"aliases": ["going"]
+	}, {
+		"name": "location",
+		"type": "string",
+		"default": "unknown"
+	}]
+}
