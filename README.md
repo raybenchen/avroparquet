@@ -1,6 +1,6 @@
 Step 1.   Clone this Repository into a directory (like c:/tools or /tools)
 
-  git clone git@github.com:airisdata/avroparquet.git
+  git clone git@github.com:airisdata/avroparquet.git 
 
 Step 2.  Clone Parquet Map Reduce Tools (for Parquet Command Line Tools)
 Note:  For this step you must have JDK 1.8 installed and in your path.   Also you must have Maven 3.x installed and in your path.
