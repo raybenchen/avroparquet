@@ -19,10 +19,9 @@ Step 5.  View the Binary Parquet File (meetup_parquet.parquet) using the parquet
 
   java -jar ./parquet-tools-1.8.0.jar cat meetup_parquet.parquet
 
-Step 6.  View the Scheam for the Same Parquet File
+Step 6.  View the Schema for the Same Parquet File
 
   java -jar ./parquet-tools-1.8.0.jar schema meetup_parquet.parquet
-
 
 Step 7.   Using AVRO Command Line Tools.   Download the avro tools.  You can either download with curl, wget or directly from a browser using the link below.
 
@@ -30,7 +29,7 @@ Step 7.   Using AVRO Command Line Tools.   Download the avro tools.  You can eit
 
 Step 8.  Copy the avro-tools jar to your path or to your local directory.
 
-Step 9.  Copy an AVRO file to your local directory or an accessible directory from avro tools
+Step 9.  Copy an AVRO file to your local directory or an accessible directory from AVRO tools
 
         Download from here:  https://github.com/airisdata/avroparquet/blob/master/airisdata-meeetup/src/main/resources/avro_file.avro
 
@@ -64,7 +63,6 @@ java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata
 java -cp ./target/avro-work-1.0-SNAPSHOT-jar-with-dependencies.jar com.airisdata.utils.StorageFormatUtils avro read src/main/resources/avro_file.avro src/main/resources/new_schema.avsc
 
 cat src/main/resources/new_schema.avsc
-
 
 Step 14:   PARQUET File Processing
 
